@@ -1,6 +1,8 @@
 package com.oocl.spring.cloud.consumer.controller;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.oocl.spring.cloud.consumer.model.Response;
+import com.oocl.spring.cloud.consumer.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,17 +11,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-import com.oocl.spring.cloud.consumer.model.Response;
-import com.oocl.spring.cloud.consumer.model.User;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class UserController {
@@ -58,8 +54,11 @@ public class UserController {
 	public Response testHystrix(){
 		logger.info("testHystrix triggered");
 		Response response = new Response();
-		response.setStatus("fail");
-		response.setErrorMsg("error!");
+		response.setStatus("success");
+		List<User> users = new ArrayList<>();
+		User user = new User("Hystrix@oocl.com","Hystrix","female");
+		users.add(user);
+		response.setResult(users);
 		return response;
 	}
 
