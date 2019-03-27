@@ -64,6 +64,12 @@
 			<artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
 			<version>RELEASE</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.10.19</version>
+		</dependency>
 
 	</dependencies>
 
