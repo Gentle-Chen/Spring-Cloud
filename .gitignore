@@ -1,0 +1,7 @@
+.idea/*
+spring-cloud-consumer/.idea/*
+spring-cloud-eureka/.idea/*
+spring-cloud-provider/.idea/*
+spring-cloud-provider2/.idea/*
+spring-cloud-zuul/.idea/*
+hystrix-dashboard-turbine/.idea/*
