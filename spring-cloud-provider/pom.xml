@@ -50,7 +50,6 @@
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId> 
 			<version>RELEASE</version> 
 		</dependency>
-		
 
 		<!-- dependency for swagger2 -->		
 		<dependency>

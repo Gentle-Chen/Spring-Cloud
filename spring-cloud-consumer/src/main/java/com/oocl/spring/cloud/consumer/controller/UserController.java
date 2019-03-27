@@ -38,12 +38,23 @@ public class UserController {
 		ResponseEntity<Response> response = restTemplate.exchange("http://spring-cloud-provider/user", HttpMethod.POST, httpEntity, Response.class);
 		return response.getBody();
 	}
-	
+
+	@HystrixCommand(fallbackMethod = "getUserByNameHystrix")
 	@GetMapping("/user/{name}")
 	public Response getUserByName(@PathVariable("name") String name) {
 		Response response = restTemplate.getForObject("http://spring-cloud-provider/user/" + name, Response.class);
 		return response; 
 	}
+
+	public Response getUserByNameHystrix(String name){
+		logger.info("getUserByNameHystrix triggered");
+		Response response = new Response();
+		response.setStatus("success");
+		User user = new User("Hystrix@oocl.com",name,"female");
+		response.setResult(user);
+		return response;
+	}
+
 	@HystrixCommand(fallbackMethod = "testHystrix")
 	@GetMapping("/users")
 	public Response getAllUser() {
