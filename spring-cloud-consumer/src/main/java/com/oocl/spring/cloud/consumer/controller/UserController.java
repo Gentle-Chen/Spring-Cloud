@@ -1,5 +1,8 @@
 package com.oocl.spring.cloud.consumer.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
@@ -20,7 +23,9 @@ import com.oocl.spring.cloud.consumer.model.User;
 
 @RestController
 public class UserController {
-	
+
+	Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	@Bean
 	@LoadBalanced
 	private RestTemplate restTemplate() {
@@ -43,13 +48,21 @@ public class UserController {
 		Response response = restTemplate.getForObject("http://spring-cloud-provider:8090/user/" + name, Response.class);
 		return response; 
 	}
-	
+	@HystrixCommand(fallbackMethod = "testHystrix")
 	@GetMapping("/users")
 	public Response getAllUser() {
 		Response response = restTemplate.getForObject("http://spring-cloud-provider:8090/users", Response.class);
 		return response; 
 	}
-	
+
+	public Response testHystrix(){
+		logger.info("testHystrix triggered");
+		Response response = new Response();
+		response.setStatus("fail");
+		response.setErrorMsg("error!");
+		return response;
+	}
+
 	@PutMapping("/user/{name}")
 	public Response updateUserByName(@PathVariable("name") String name, @RequestBody User user) {
 		HttpEntity<User> httpEntity = new HttpEntity<User>(user);

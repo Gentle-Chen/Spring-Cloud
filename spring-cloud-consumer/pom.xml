@@ -37,10 +37,23 @@
 		<!-- dependency for spring cloud eureka -->
 		<dependency> 
 			<groupId>org.springframework.cloud</groupId> 
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId> 
-			<version>RELEASE</version> 
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+			<version>RELEASE</version>
 		</dependency>
-		
+
+		<!-- dependency for spring cloud hystrix ribbon -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+			<version>RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+			<version>RELEASE</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
