@@ -8,3 +8,6 @@
 - spring-cloud-consumer:8092
 
 page:http://localhost:8093/spring-cloud-consumer/user-data-table.html
+
+hystrix dashboard page:http://localhost:8092/hystrix
+reference data : http://localhost:8092/hystrix.stream
