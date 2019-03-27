@@ -28,6 +28,7 @@ public class UserController {
 		User result = userService.insertUser(user);
 		response.setStatus(GlobalConstant.SUCCESS);
 		response.setResult(result);
+		response.setErrorMsg("this is from provider2");
 		return response; 
 	}
 	
@@ -38,6 +39,7 @@ public class UserController {
 			User user = userService.getUserByName(name);
 			response.setStatus(GlobalConstant.SUCCESS);
 			response.setResult(user);
+			response.setErrorMsg("this is from provider2");
 		}catch (Exception e) {
 			// TODO: handle exception
 			response.setStatus("fail");
@@ -53,6 +55,7 @@ public class UserController {
 			List<User> users = userService.getAllUser();
 			response.setStatus(GlobalConstant.SUCCESS);
 			response.setResult(users);
+			response.setErrorMsg("this is from provider2");
 		}catch (Exception e) {
 			// TODO: handle exception
 			response.setStatus("fail");
@@ -68,6 +71,7 @@ public class UserController {
 			int i = userService.updateUserByName(name, user);
 			response.setStatus(GlobalConstant.SUCCESS);
 			response.setUpdateCount(i);
+			response.setErrorMsg("this is from provider2");
 		}catch (Exception e) {
 			response.setStatus("fail");
 			response.setErrorMsg(e.getMessage() + " for update");
@@ -82,6 +86,7 @@ public class UserController {
 			int i = userService.deleteUserByName(name);
 			response.setStatus(GlobalConstant.SUCCESS);
 			response.setUpdateCount(i);
+			response.setErrorMsg("this is from provider2");
 		}catch (Exception e) {
 			response.setStatus("fail");
 			response.setErrorMsg(e.getMessage() + " for delete");
