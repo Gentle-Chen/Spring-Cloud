@@ -15,6 +15,6 @@ hystrix dashboard page:http://localhost:8092/hystrix
 - reference data : http://localhost:8092/hystrix.stream
 - turbine reference data : http://localhost:8001/turbine.stream
 
-spring-cloud-config-server: 
+spring-cloud-config-server: https://github.com/J0e9u0/spring-cloud-config.git
 - http://localhost:8003/config/dev
 - http://localhost:8003/config/pro
